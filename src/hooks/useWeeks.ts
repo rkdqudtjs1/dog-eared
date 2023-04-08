@@ -89,9 +89,9 @@ const useWeeks = () => {
   }, [endWeek, isFetchingNext, weeks]);
 
   useEffect(() => {
-    const a = dayjs().startOf("week");
-    const year = a.year();
-    const week = a.week();
+    const d = dayjs().endOf("week");
+    const year = d.year();
+    const week = d.week();
 
     setWeeks([
       ...getWeeks(year, week, -FETCH_WEEK_COUNT),
