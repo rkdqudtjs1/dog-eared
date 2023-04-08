@@ -17,7 +17,7 @@ const useSearchBooks = (name: string, { limit = 10 }: Options) => {
         const { start, display, total } = data;
         const hasNextPage = start + display < total;
         if (!hasNextPage) return;
-        const nextPage = (start - 1) / limit + 1 +1;
+        const nextPage = (start - 1) / limit + 1 + 1;
         return nextPage;
       },
       enabled: !!name,
