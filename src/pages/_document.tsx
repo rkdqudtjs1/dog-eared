@@ -1,3 +1,4 @@
+import AppleHead from "@/components/Meta/AppleHead";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -78,7 +79,8 @@ export default function Document() {
           name="msapplication-TileImage"
           content="/favicon/ms-icon-144x144.png"
         />
-        <meta name="theme-color" content="#fafafa" />
+        <meta name="theme-color" content="#121212" />
+        <AppleHead />
       </Head>
       <body>
         <Main />
