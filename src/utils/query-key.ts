@@ -1,8 +1,8 @@
 const queryKey = {
-  searchBook: (name: string, pagination: Pagination) => [
+  searchBook: (name: string) => [
     "books",
     "search",
-    { name, ...pagination },
+    { name },
   ],
 };
 
