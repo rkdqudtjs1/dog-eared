@@ -3,37 +3,43 @@ import { ReactNode, useEffect, useRef } from "react";
 type Props = {
   children: ReactNode;
   disabled?: boolean;
-  onReachedEnd: () => void;
+  onReachedStart?: () => void;
+  onReachedEnd?: () => void;
 };
 
 const InfiniteScrollContainer = ({
   children,
   disabled,
+  onReachedStart,
   onReachedEnd,
 }: Props) => {
-  const watcher = useRef<HTMLDivElement>(null);
+  const start = useRef<HTMLDivElement>(null);
+  const end = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const io = new IntersectionObserver((entries) => {
       if (disabled || entries.length === 0) return;
-      const entry = entries[0];
 
-      if (entry.isIntersecting) {
-        onReachedEnd();
-      }
+      entries.forEach(({ target, isIntersecting }) => {
+        if (!isIntersecting) return;
+        if (target === start.current && onReachedStart) onReachedStart();
+        if (target === end.current && onReachedEnd) onReachedEnd();
+      });
     });
 
-    if (watcher.current) io.observe(watcher.current);
+    if (start.current) io.observe(start.current);
+    if (end.current) io.observe(end.current);
 
     return () => {
       io.disconnect();
     };
-  }, [disabled]);
+  }, [disabled, onReachedEnd, onReachedStart]);
 
   return (
     <div>
+      <div ref={start} />
       {children}
-      <div ref={watcher} />
+      <div ref={end} />
     </div>
   );
 };
