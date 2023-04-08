@@ -25,10 +25,7 @@ const BookSearchPage: NextPage = () => {
       </div>
 
       <InfiniteScrollContainer
-        onReachedEnd={() => {
-          console.log("fetch next");
-          fetchNextPage();
-        }}
+        onReachedEnd={fetchNextPage}
         disabled={isFetching || !hasNextPage}
       >
         <div className="flex flex-col gap-4 p-4">
