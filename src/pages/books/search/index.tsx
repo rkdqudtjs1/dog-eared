@@ -1,19 +1,17 @@
 import Book from "@/components/Book";
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
-import usePagination from "@/hooks/usePagination";
+import useDebouncedValue from "@/hooks/useDebouncedValue";
 import useSearchBooks from "@/hooks/useSearchBooks";
-import queryKey from "@/utils/query-key";
-import axios from "axios";
 import { NextPage } from "next";
 import { useState } from "react";
 
 const BookSearchPage: NextPage = () => {
   const [name, setName] = useState("");
-  const [pagination, setPagination] = usePagination();
+  const debouncedName = useDebouncedValue(name);
 
   const { books, isFetching, hasNextPage, fetchNextPage } = useSearchBooks(
-    name,
-    pagination
+    debouncedName,
+    { limit: 20 }
   );
 
   return (
