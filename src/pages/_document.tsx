@@ -74,7 +74,6 @@ export default function Document() {
           href="/favicon/favicon-16x16.png"
         />
         <link rel="manifest" href="/favicon/manifest.json" />
-        <meta name="msapplication-TileColor" content="#fafafa" />
         <meta
           name="msapplication-TileImage"
           content="/favicon/ms-icon-144x144.png"
