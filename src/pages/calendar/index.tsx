@@ -1,4 +1,6 @@
 import { NextPage } from "next";
+import Head from "next/head";
+
 import Week from "@/components/Calendar/Week";
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
@@ -16,15 +18,20 @@ const CalendarPage: NextPage = () => {
   }, [firstWeekNumber]);
 
   return (
-    <InfiniteScrollContainer
-      disabled={isFetchingPrev || isFetchingNext}
-      onReachedStart={getPrevWeeks}
-      onReachedEnd={getNextWeeks}
-    >
-      {weeks.map((week) => (
-        <Week key={`${week.year}-${week.number}`} {...week} />
-      ))}
-    </InfiniteScrollContainer>
+    <>
+      <Head>
+        <title>Calendar | Dog Eared</title>
+      </Head>
+      <InfiniteScrollContainer
+        disabled={isFetchingPrev || isFetchingNext}
+        onReachedStart={getPrevWeeks}
+        onReachedEnd={getNextWeeks}
+      >
+        {weeks.map((week) => (
+          <Week key={`${week.year}-${week.number}`} {...week} />
+        ))}
+      </InfiniteScrollContainer>
+    </>
   );
 };
 
