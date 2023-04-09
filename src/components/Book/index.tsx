@@ -2,11 +2,12 @@ import Image from "next/image";
 
 type Props = {
   book: Book;
+  onClick?: (book: Book) => void;
 };
 
-const Book = ({ book }: Props) => {
+const Book = ({ book, onClick = () => undefined }: Props) => {
   return (
-    <div className="flex">
+    <div className="flex" onClick={() => onClick(book)}>
       <div className="relative" style={{ width: "100px", height: "100px" }}>
         <Image
           fill
