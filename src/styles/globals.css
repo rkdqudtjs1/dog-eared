@@ -6,6 +6,7 @@ html {
   width: 100vw;
   height: 100vh;
   background-color: #121212;
+  word-break: keep-all;
 }
 
 body {
@@ -14,5 +15,10 @@ body {
 
 input,
 textarea {
-  background-color: #333333;
+  background-color: transparent;
+  padding: 0.5rem;
+}
+
+a {
+  text-decoration: underline;
 }
