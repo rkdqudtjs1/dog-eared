@@ -1,7 +1,7 @@
 type ModelBase = {
   id: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: number;
+  updatedAt: number;
 };
 
 type Book = {

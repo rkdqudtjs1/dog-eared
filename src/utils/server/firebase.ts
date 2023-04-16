@@ -16,8 +16,8 @@ import { QueryDocumentSnapshot } from "@google-cloud/firestore";
 export const docToData = <T>(doc: QueryDocumentSnapshot<T>) => {
   const base: ModelBase = {
     id: doc.id,
-    createdAt: String(doc.createTime.toMillis()),
-    updatedAt: String(doc.updateTime.toMillis()),
+    createdAt: doc.createTime.toMillis(),
+    updatedAt: doc.updateTime.toMillis(),
   };
 
   return {
