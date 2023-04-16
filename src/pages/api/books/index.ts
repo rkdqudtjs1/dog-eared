@@ -1,18 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { searchBooks } from "@/services/book";
 import type { NextApiRequest, NextApiResponse } from "next";
-import naverAPI from "@/utils/naver-api";
-
-const searchBooks = (name: string, { limit, page }: Pagination) => {
-  const start = (page - 1) * limit + 1;
-  return naverAPI.get("/search/book.json", {
-    params: {
-      query: name,
-      display: limit,
-      start,
-      sort: "sim",
-    },
-  });
-};
 
 type Data = any;
 
