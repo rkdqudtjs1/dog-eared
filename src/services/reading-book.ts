@@ -1,4 +1,4 @@
-import { ReadingBook } from "@/utils/firebase";
+import { ReadingBook, docToData } from "@/utils/server/firebase";
 
 export const createReadingBook = (readingBook: ReadingBook) => {
   return ReadingBook.add(readingBook);
@@ -6,7 +6,10 @@ export const createReadingBook = (readingBook: ReadingBook) => {
 
 export const updateReadingBook = () => {};
 export const deleteReadingBook = () => {};
-export const getReadingBooks = () => {};
+export const getReadingBooks = async () => {
+  const { docs } = await ReadingBook.get();
+  return docs.map(docToData);
+};
 
 export const createReadingBookLog = () => {};
 export const deleteReadingBookLog = () => {};
