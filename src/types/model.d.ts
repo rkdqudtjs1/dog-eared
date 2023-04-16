@@ -10,10 +10,10 @@ type Book = {
   title: string;
 };
 type ReadingBook = {
-  bookId: string;
+  isbn: string;
   startAt: string;
   endAt: string;
-  logs: {}[];
+  logs?: ReadingBookLog[];
 
   createdAt: string;
   updatedAt: string;
@@ -24,7 +24,7 @@ type ReadingBookLog = {
   updatedAt: string;
 };
 type BookComment = {
-  bookId: string;
+  isbn: string;
   page?: number;
   line?: number;
   content: string;
