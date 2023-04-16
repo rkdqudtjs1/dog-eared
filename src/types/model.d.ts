@@ -1,3 +1,9 @@
+type ModelBase = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 type Book = {
   isbn: string; // PK
   author: string;
@@ -9,25 +15,18 @@ type Book = {
   publisher: string;
   title: string;
 };
-type ReadingBook = {
+type ReadingBook = ModelBase & {
   isbn: string;
   startAt: string;
   endAt: string;
   logs?: ReadingBookLog[];
-
-  createdAt: string;
-  updatedAt: string;
 };
-type ReadingBookLog = {
+type ReadingBookLog = ModelBase & {
   page: number;
-  createdAt: string;
-  updatedAt: string;
 };
-type BookComment = {
+type BookComment = ModelBase & {
   isbn: string;
   page?: number;
   line?: number;
   content: string;
-  createdAt: string;
-  updatedAt: string;
 };
