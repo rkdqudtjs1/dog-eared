@@ -1,10 +1,15 @@
-import axios from "axios";
-import { useEffect } from "react";
+import useReadingBooks from "@/hooks/useReadingBooks";
 
 const TestPage = () => {
-  useEffect(() => {}, []);
+  const { readingBooks } = useReadingBooks();
 
-  return <div />;
+  return (
+    <div>
+      {readingBooks.map((rb) => {
+        return <pre key={rb.id}>{JSON.stringify(rb, null, 2)}</pre>;
+      })}
+    </div>
+  );
 };
 
 export default TestPage;
