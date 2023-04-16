@@ -13,16 +13,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   }
 
   if (method === "POST") {
-    const result = await createReadingBook({
-      isbn: "9791197021688",
-      startAt: "2023-04-16",
-      endAt: "",
-      logs: [],
-      createdAt: "",
-      updatedAt: "",
-    });
+    // const result = await createReadingBook({});
 
-    res.status(200).json(result);
+    res.status(200).json({});
   }
 
   res.status(404);
