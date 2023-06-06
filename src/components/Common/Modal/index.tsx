@@ -1,5 +1,7 @@
+"use client";
+
+import { MODAL_ROOT_ID } from "@/app/layout";
 import useIsClient from "@/hooks/useIsClient";
-import { MODAL_ROOT_ID } from "@/pages/_app";
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 

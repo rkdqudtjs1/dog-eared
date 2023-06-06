@@ -1,4 +1,4 @@
-import Modal from "@/components/Modal";
+import Modal from "@/components/Common/Modal";
 import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";

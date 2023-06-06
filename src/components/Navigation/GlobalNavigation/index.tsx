@@ -1,8 +1,10 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter, usePathname } from "next/navigation";
 import { useCallback } from "react";
 
 const items = [
-  { path: "/", label: "Calendar", icon: "fa-regular fa-calendar-days" },
+  { path: "/calendar", label: "Calendar", icon: "fa-regular fa-calendar-days" },
   {
     path: "/books/search",
     label: "Search",
@@ -11,19 +13,21 @@ const items = [
 ];
 
 const GlobalNavigation = () => {
-  const { push, route } = useRouter();
+  const { push } = useRouter();
+  const pathname = usePathname();
+
   const onClickItem = useCallback(
     (path: string) => {
-      if (route === path) return;
+      if (pathname === path) return;
       push(path);
     },
-    [route]
+    [pathname, push]
   );
 
   return (
     <nav className={`flex h-16 w-full fixed bottom-0 left-0 bg-grey-2`}>
       {items.map(({ label, icon, path }) => {
-        const isActive = route === path;
+        const isActive = pathname?.startsWith(path);
 
         return (
           <button

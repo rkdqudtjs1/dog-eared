@@ -1,15 +1,19 @@
-type Props = { value: string; onChange: (value: string) => void };
+"use client";
 
-const BookSearchInput = ({ value, onChange }: Props) => {
+import { useState } from "react";
+
+const BookSearchInput = () => {
+  const [query, setQuery] = useState("");
+
   return (
     <div className="gap-1 flex items-center px-4 h-11 bg-grey-2">
       <i className="fa-solid fa-magnifying-glass"></i>
       <input
         autoFocus
         className="flex-1 h-full outline-none"
-        value={value}
+        value={query}
         placeholder="검색어를 입력하세요."
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => setQuery(e.target.value)}
       />
     </div>
   );
