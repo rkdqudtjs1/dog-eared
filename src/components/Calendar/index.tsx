@@ -61,11 +61,15 @@ const Calendar = () => {
         />
       </div>
       <div className="grid grid-cols-7">
-        {days.map((day) => {
-          if (!day) return null;
+        {days.map((day, index) => {
+          const key = !day
+            ? String(index)
+            : `${day.dayjs.format("YYYY-MM-DD")}`;
+
+          if (!day) return <div key={key} />;
           return (
             <CalendarDate
-              key={day.date}
+              key={key}
               date={day.date}
               onClick={() => onClickDate(day.dayjs)}
             />
