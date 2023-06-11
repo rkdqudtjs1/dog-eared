@@ -1,7 +1,5 @@
 import { redirect } from "next/navigation";
 
-const RootPage = () => {
+export const GET = () => {
   redirect("calendar");
 };
-
-export default RootPage;
